@@ -1,0 +1,7 @@
+<!ENTITY toolbar_button.title "View Jobs">
+
+<!ENTITY first_start.description "JobManager: Click this button to setup your jobs and clients...">
+
+<!ENTITY main_button.menu.jobs "Jobs">
+<!ENTITY main_button.menu.clients "Clients">
+<!ENTITY main_button.menu.reports "Reports">

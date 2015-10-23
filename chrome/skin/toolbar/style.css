@@ -1,0 +1,12 @@
+#jobmanagerButton{
+	list-style-image: url(main_button_small.png);
+}
+
+toolbar[iconsize="small"] #jobmanagerButton{
+	list-style-image: url(main_button_small.png);
+}
+
+#jobManagerStatusBarMessage *{
+	cursor: pointer;
+	font-weight: bold;
+}

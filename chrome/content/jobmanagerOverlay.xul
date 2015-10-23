@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://jobmanager/locale/overlay.dtd">
+<?xml-stylesheet href="chrome://jobmanager/skin/toolbar/style.css" type="text/css"?>
+
+<overlay id="jobmanagerOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<script src="jobmanagerOverlay.js"/>
+
+	<popupset id="mainPopupSet">
+	
+		<panel id="jobManagerFirstInstallHelpPanel"
+			   type="arrow"
+			   orient="vertical" 
+			   ignorekeys="true"	     
+			   >
+			
+			<vbox>
+			
+				<description>&first_start.description;</description>
+			
+			</vbox>
+			
+		</panel>
+		
+	</popupset>
+	
+	<toolbarpalette id="BrowserToolbarPalette">    
+		<toolbarbutton id="jobmanagerButton" class="toolbarbutton-1" label="&toolbar_button.title;" type="menu-button" oncommand="jobManagerOverlay.openJobsWindow()">
+			<menupopup>
+				<menuitem label="&main_button.menu.jobs;">
+					
+				</menuitem>
+				<menuitem label="&main_button.menu.clients;" oncommand="jobmanagerDialogs.displayDialog( window, 'clients' ); event.stopPropagation()">
+					
+				</menuitem>
+				<menu onpopupshowing="jobmanagerMisc.fillReportsContextMenu( 'jobManagerMainButtonMenuReports', document )" label="&main_button.menu.reports;">
+					<menupopup id="jobManagerMainButtonMenuReports">
+					</menupopup>
+				</menu>
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>	
+	
+	
+	<statusbar id="status-bar">
+		<statusbarpanel class="statusbarpanel" id="jobManagerStatusBarMessage" onclick="jobManagerOverlay.openJobsWindow()">
+			<label value="N/A"/>
+		</statusbarpanel>
+	</statusbar>
+	
+</overlay>

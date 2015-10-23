@@ -1,0 +1,15 @@
+<!ENTITY window.title "Clients" >
+
+<!ENTITY clientId.label "ID" >
+<!ENTITY clientName.label "Name" >
+<!ENTITY clientDefaultHourPrice.label "Default Hour Price" >
+
+<!ENTITY remove.label "Remove" >
+<!ENTITY edit.label "Edit" >
+<!ENTITY add.label "Add" >
+<!ENTITY monthly_report.label "Monthly Report" >
+<!ENTITY close.label "Close">
+
+
+
+

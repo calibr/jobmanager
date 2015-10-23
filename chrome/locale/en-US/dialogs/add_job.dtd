@@ -1,0 +1,6 @@
+<!ENTITY window.title "Add/Update Job">
+
+<!ENTITY description.label "Description:">
+<!ENTITY client.label "Client:">
+<!ENTITY hour_price.label "Hour price:">
+<!ENTITY close.label "Cancel">

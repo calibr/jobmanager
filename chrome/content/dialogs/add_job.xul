@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE window [
+<!ENTITY % jobManagerDTD SYSTEM "chrome://jobmanager/locale/dialogs/add_job.dtd">
+%jobManagerDTD;
+]>
+
+<window 
+title="&window.title;"
+xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+xmlns:html="http://www.w3.org/1999/xhtml"
+height="180"
+width="300"
+>
+
+<script src="add_job.js"/>
+
+
+<grid flex="1">
+  
+  <columns>
+    <column flex="2"/>
+    <column flex="1"/>
+  </columns>
+
+  <rows>
+    <row align="center">
+		<label control="boxDescription" value="&description.label;"/>
+		
+		<menulist id="boxDescription" editable="true">
+		  <menupopup>
+			
+		  </menupopup>
+		</menulist>
+    </row>
+    <row align="center">
+		<label control="boxClient" value="&client.label;"/>
+		<menulist id="boxClient" oncommand="doSelectClient()">
+			<menupopup>
+				
+			</menupopup>
+		</menulist>
+    </row>
+    <row align="center">
+		<label control="boxHourPrice" value="&hour_price.label;"/>
+		<textbox id="boxHourPrice" type="number" min="0" max="1000" decimalplaces="2"/>
+    </row>
+  </rows>
+
+</grid>
+
+<hbox class="b">	
+	<hbox pack="end" flex="2">
+		<button oncommand="window.close()" label="&close.label;"/>
+		<button id="addButton" oncommand="doAdd()"/>
+	</hbox>
+</hbox>
+
+
+</window>

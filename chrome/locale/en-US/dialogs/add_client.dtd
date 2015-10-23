@@ -1,0 +1,4 @@
+<!ENTITY window.title "Add/Edit Client" >
+<!ENTITY box_name.label "Name:">
+<!ENTITY box_default_hour_price.label "Default hour price:">
+<!ENTITY close.label "Cancel">

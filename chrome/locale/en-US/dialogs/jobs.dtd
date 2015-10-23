@@ -1,0 +1,25 @@
+<!ENTITY window.title "Jobs">
+<!ENTITY jobStatus.label "Status">
+<!ENTITY jobID.label "ID">
+
+<!ENTITY jobDesc.label "Description">
+<!ENTITY jobStartDate.label "Start Date">
+
+<!ENTITY jobElapsed.label "Elapsed Time">
+<!ENTITY jobEarned.label "Earned">
+<!ENTITY jobHourPrice.label "ID">
+<!ENTITY jobID.label "ID">
+<!ENTITY jobEarned.label "jobEarned">
+
+<!ENTITY actions.label "Actions">
+<!ENTITY pause.label "Pause">
+<!ENTITY resume.label "Resume">
+<!ENTITY finish.label "Finish">
+<!ENTITY remove.label "Remove">
+<!ENTITY editlabel "Edit">
+<!ENTITY add.label "Add">
+
+<!ENTITY jobHourPrice.label "Hour Price">
+
+<!ENTITY clients.label "Clients" >
+<!ENTITY close.label "Close" >

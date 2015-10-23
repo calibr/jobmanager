@@ -1,0 +1,7 @@
+content	jobmanager chrome/content/
+skin	jobmanager classic/1.0 chrome/skin/
+
+overlay	chrome://browser/content/browser.xul chrome://jobmanager/content/jobmanagerOverlay.xul
+style	chrome://global/content/customizeToolbar.xul chrome://jobmanager/skin/toolbar/style.css
+
+locale	jobmanager	en-US	chrome/locale/en-US/
