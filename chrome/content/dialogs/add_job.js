@@ -1,7 +1,7 @@
 try{
 	Components.utils.import("chrome://jobmanager/content/modules/db.js");
 	Components.utils.import("chrome://jobmanager/content/modules/dialogs.js");
-	Components.utils.import("chrome://jobmanager/content/modules/properties.js");	
+	Components.utils.import("chrome://jobmanager/content/modules/properties.js");
 }
 catch( ex ){
 
@@ -10,15 +10,15 @@ catch( ex ){
 var isUpdate = false;
 
 function init(){
-	try{	
-		var button = document.getElementById( "addButton" );	
-		
+	try{
+		var button = document.getElementById( "addButton" );
+
 		if( window.arguments[0] && typeof window.arguments[0].id != "undefined" ){
 			isUpdate = true;
 		}
-		
+
 		button.setAttribute( "label" , jobmanagerProperties.get( "misc", isUpdate ? "add_job.add_label_update" : "add_job.add_label_add" ) );
-		
+
 		if( isUpdate ){
 			// init default values
 			jobmanagerDB.getJob( window.arguments[0].id, {
@@ -26,14 +26,14 @@ function init(){
 					if( job != null ){
 						document.getElementById( "boxDescription" ).value = job.description;
 						document.getElementById( "boxClient" ).value = job.clientId;
-						document.getElementById( "boxHourPrice" ).value = job.hourPrice;											
+						document.getElementById( "boxHourPrice" ).value = job.hourPrice;
 					}
 				},
 				inst: window
 			} );
 
 		}
-		
+
 		var container = document.getElementById( "boxDescription" ).getElementsByTagName("menupopup")[0];
 		jobmanagerDB.jobNamesUnique( 10, {
 			func: function( jobNames ){
@@ -45,7 +45,7 @@ function init(){
 			},
 			inst: window
 		} );
-		
+
 
 	}
 	catch( ex ){
@@ -58,8 +58,8 @@ function doAdd(){
 	try{
 		var description = document.getElementById( "boxDescription" ).value;
 		var clientId = document.getElementById( "boxClient" ).value;
-		var hourPrice = document.getElementById( "boxHourPrice" ).value;		
-		
+		var hourPrice = document.getElementById( "boxHourPrice" ).value;
+
 		if( isUpdate ){
 			jobmanagerDB.editJob( window.arguments[0].id, {
 				"description": description,
@@ -68,19 +68,13 @@ function doAdd(){
 			} );
 		}
 		else{
-			jobmanagerDB.addJob( clientId, description, hourPrice, {
-				func: function( jobId ){
-					jobmanagerDB.startJob( jobId );
-				},
-				inst: window,
-				args: [jobmanagerDB]
-			} );
-		}		
+			jobmanagerDB.addJob(clientId, description, hourPrice);
+		}
 	}
 	catch( ex ){
 
 	}
-	
+
 	window.close();
 }
 
@@ -91,73 +85,73 @@ function doSelectClient(){
 		jobmanagerDB.getClient( clientId, {
 			func: function( client ){
 				if( client != null ){
-					document.getElementById( "boxHourPrice" ).value = client.defaultHourPrice;					
+					document.getElementById( "boxHourPrice" ).value = client.defaultHourPrice;
 				}
 			},
-			inst: window			
-		} );		
-		
-	}	
+			inst: window
+		} );
+
+	}
 }
 
-function refreshClientsList( callback ){	
+function refreshClientsList( callback ){
 	var prevValue = document.getElementById( "boxClient" ).value;
-	
+
 	var container = document.getElementById( "boxClient" ).getElementsByTagName("menupopup")[0];
-	
+
 	while( container.firstChild ){
 		container.removeChild( container.firstChild );
 	}
-	
+
 	jobmanagerDB.listClients({
 		func: function( clients, jobmanagerDialogs ){
-			
+
 			if( clients != null ){
-				
+
 				if( clients.length == 0 ){
 					jobmanagerDialogs.alert( "add_job.clients_not_found" );
 					window.close();
 				}
-				
+
 				for( var i = 0; i != clients.length; i++ ){
 					var item = document.createElement( "menuitem" );
 					item.setAttribute( "label", clients[i].name );
 					item.setAttribute( "value", clients[i].id );
-					
+
 					container.appendChild( item );
 				}
-				
+
 				if( prevValue == "" ){
 					prevValue = clients.length != 0 ? clients[0].id : 0;
 				}
-				
+
 				document.getElementById( "boxClient" ).value = prevValue;
-				
+
 				doSelectClient();
-				
+
 			}
-			
+
 			if( callback ){
 				callback();
 			}
-			
+
 		},
 		inst: window,
 		args: [jobmanagerDialogs]
 	});
-	
+
 
 }
 
 
-window.addEventListener( "load", function(){	
+window.addEventListener( "load", function(){
 	try{
 		refreshClientsList(function(){
 			init();
-		});			
+		});
 	}
 	catch( ex ){
-		
-	}	
+
+	}
 
 } );
